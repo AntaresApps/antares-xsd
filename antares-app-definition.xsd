@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.surfertank.com/antares/flow/xml/subscriptions" elementFormDefault="qualified"
+    targetNamespace="http://www.surfertank.com/antares/flow/xml/subscriptions" version="1">
+    <xs:element name="Applications">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Application" minOccurs="0" maxOccurs="unbounded" />
+                <xs:any namespace="##other" processContents="lax" minOccurs="0"
+                    maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Application">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Description" minOccurs="0" />
+                <xs:element ref="FormalParameters" />
+                <xs:element ref="ExtendedAttributes" minOccurs="0" />
+                <xs:any namespace="##other" processContents="lax" minOccurs="0"
+                    maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="Id" type="xs:NMTOKEN" use="required" />
+            <xs:attribute name="Name" type="xs:string" use="optional" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FormalParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="FormalParameter" minOccurs="0" maxOccurs="unbounded" />
+                <xs:choice minOccurs="0">
+                    <xs:sequence>
+                        <xs:element name="Extensions" />
+                        <xs:any namespace="##other" processContents="lax" minOccurs="0"
+                            maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:choice>
+            </xs:sequence>
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FormalParameter">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="InitialValue" type="ExpressionType" minOccurs="0" />
+                <xs:element ref="Description" minOccurs="0" />
+                <xs:any namespace="##other" processContents="lax" minOccurs="0"
+                    maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="Id" type="xs:NMTOKEN" use="required" />
+            <xs:attribute name="Mode" default="IN">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="IN" />
+                        <xs:enumeration value="OUT" />
+                        <xs:enumeration value="INOUT" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Name" type="xs:string" use="optional" />
+            <xs:attribute name="ReadOnly" type="xs:boolean" use="optional" default="false" />
+            <xs:attribute name="Required" type="xs:boolean" use="optional" default="false" />
+            <xs:attribute name="IsArray" type="xs:boolean" use="optional" default="false" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Description">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##other" processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Documentation">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##other" processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ExpressionType" mixed="true">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </xs:choice>
+        <xs:attribute name="ScriptType" type="xs:string" use="optional" />
+        <xs:attribute name="ScriptVersion" type="xs:string" use="optional" />
+        <xs:attribute name="ScriptGrammar" type="xs:anyURI" use="optional" />
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+    <xs:element name="ExtendedAttribute">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:any namespace="##other" processContents="lax" minOccurs="0"
+                    maxOccurs="unbounded" />
+            </xs:choice>
+            <xs:attribute name="Name" type="xs:NMTOKEN" use="required" />
+            <xs:attribute name="Value" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ExtendedAttributes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ExtendedAttribute" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

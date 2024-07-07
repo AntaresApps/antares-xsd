@@ -3,13 +3,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns="http://www.surfertank.com/antares/flow/xml/activityextendedattributes"
     targetNamespace="http://www.surfertank.com/antares/flow/xml/subscriptions" version="1">
-    <xs:element name="ActivityTabs">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="ActivityTab" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
     <xs:element name="ActivityTab">
         <xs:complexType>
             <xs:sequence>
@@ -19,6 +12,13 @@
             <xs:attribute name="name" use="required" />
             <xs:attribute name="route" use="required" />
             <xs:attribute name="url" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ActivityTabs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ActivityTab" />
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="Parameters">

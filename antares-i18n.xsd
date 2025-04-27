@@ -10,8 +10,8 @@
     xmlns:drools="http://www.jboss.org/drools" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
     xmlns:i18n="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-i18n.xsd"
     xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI">
-    <xs:import namespace="http://www.bpsim.org/schemas/1.0" schemaLocation="bpsim.xsd" />
-    <xs:import namespace="http://www.jboss.org/drools" schemaLocation="drools.xsd" />
+    <xs:import namespace="http://www.bpsim.org/schemas/1.0" />
+    <xs:import namespace="http://www.jboss.org/drools"  />
     <xs:import namespace="http://www.omg.org/spec/BPMN/20100524/DI" schemaLocation="bpmndi.xsd" />
     <xs:import namespace="http://www.omg.org/spec/BPMN/20100524/MODEL" schemaLocation="i18n.xsd" />
     <xs:import namespace="http://www.omg.org/spec/DD/20100524/DC"  />

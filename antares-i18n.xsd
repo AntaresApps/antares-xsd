@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-i18n.xsd"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0"
+    xmlns:subs="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-flow-subscription.xsd"
+    xmlns:act="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-activity-ext.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:appDef="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-app-definition.xsd"
+    xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:drools="http://www.jboss.org/drools" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:i18n="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-i18n.xsd"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI">
+    <xs:import namespace="http://www.bpsim.org/schemas/1.0" schemaLocation="bpsim.xsd" />
+    <xs:import namespace="http://www.jboss.org/drools" schemaLocation="drools.xsd" />
+    <xs:import namespace="http://www.omg.org/spec/BPMN/20100524/DI" schemaLocation="bpmndi.xsd" />
+    <xs:import namespace="http://www.omg.org/spec/BPMN/20100524/MODEL" schemaLocation="i18n.xsd" />
+    <xs:import namespace="http://www.omg.org/spec/DD/20100524/DC"  />
+    <xs:import namespace="http://www.omg.org/spec/DD/20100524/DI" />
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance"  />
+    <xs:import
+        namespace="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-activity-ext.xsd"
+        />
+    <xs:import
+        namespace="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-app-definition.xsd"
+         />
+    <xs:import
+        namespace="https://raw.githubusercontent.com/AntaresApps/antares-xsd/main/antares-flow-subscription.xsd"
+         />
+    <xs:element name="translationUnits">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="i18n:translationUnit" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="translationUnit">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="i18n:translation" />
+            </xs:sequence>
+            <xs:attribute name="id" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="translation">
+        <xs:complexType>
+            <xs:attribute name="lang" use="required" type="xs:NCName" />
+            <xs:attribute name="localizedText" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
